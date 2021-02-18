@@ -4,7 +4,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!-- interactive view mobile device menu -->
+
+        <!-- set responsive toogle mobile device menu -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
         <title>{% block title %}{% endblock %}ShoperHead</title>
@@ -44,7 +45,12 @@
         <footer class="footer">
             <h3 class="is-size-4 mb-4">ShoperHead</h3>
 
-            <a href="#">Become Vendor</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'vendor_admin' %}">Vendor admin</a>
+            {% else %}
+                <a href="{% url 'become_vendor' %}">Become vendor</a>
+            {% endif %}
+            
         </footer>
 
     </body>
